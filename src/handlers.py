@@ -6,10 +6,9 @@ from aiogram.filters import Command
 import kb
 import text
 from states import State
-from data import TaskRepository  # <-- этот теперь асинхронный
-from utils import get_current_day_num
+from data import TaskRepository
 
-task_repo = TaskRepository("http://localhost:8080")  # URL Go-сервера
+task_repo = TaskRepository("http://localhost:8080")
 router = Router()
 
 

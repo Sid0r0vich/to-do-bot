@@ -22,7 +22,6 @@ class TaskRepository:
         return resp.json()["id"]
 
     async def delete_task(self, user_id: int, task_text: str) -> bool:
-        # пока нет эндпоинта — можно будет добавить
         return False
 
     async def get_all_user_tasks(self, user_id: int, day: int = None) -> list[str]:
