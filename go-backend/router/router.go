@@ -1,15 +1,19 @@
 package router
 
 import (
-    "github.com/gin-gonic/gin"
-    "go-backend/handlers"
+	"go-backend/handlers"
+
+	"github.com/gin-gonic/gin"
 )
 
 func SetupRouter() *gin.Engine {
-    r := gin.Default()
+	r := gin.Default()
 
-    r.POST("/tasks", handlers.AddTask)
-    r.GET("/tasks", handlers.GetTasks)
+	r.POST("/tasks", handlers.AddTask)
+	r.GET("/tasks", handlers.GetTasks)
 
-    return r
+	r.GET("/notifications/pending", handlers.GetPendingNotifications)
+	r.POST("/notifications/:id/mark-sent", handlers.MarkNotificationSent)
+
+	return r
 }
