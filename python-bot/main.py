@@ -1,17 +1,18 @@
 import asyncio
 import logging
+import os
 
 from aiogram import Bot, Dispatcher
 from aiogram.client.default import DefaultBotProperties
 from aiogram.enums.parse_mode import ParseMode
 from aiogram.fsm.storage.memory import MemoryStorage
 
-import config
 import text
 from data import TaskRepository
 from handlers import router
+import config
 
-task_repo = TaskRepository("http://localhost:8080")
+task_repo = TaskRepository("http://go-backend:8080")
 
 
 async def check_notifications(bot: Bot):

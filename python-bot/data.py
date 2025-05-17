@@ -4,7 +4,7 @@ from utils import get_current_day_num
 
 
 class TaskRepository:
-    def __init__(self, base_url="http://localhost:8080"):
+    def __init__(self, base_url):
         self.base_url = base_url
         self.client = httpx.AsyncClient()
 

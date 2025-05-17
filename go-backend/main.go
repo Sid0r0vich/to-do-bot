@@ -1,6 +1,7 @@
 package main
 
 import (
+	"fmt"
 	"log"
 	"net/http"
 
@@ -9,8 +10,11 @@ import (
 )
 
 func main() {
+	port := 8080
+	// os.Setenv("DB_CONNECTION_STRING", "user=postgres password=secret dbname=tasksdb sslmode=disable")
+
 	log.Println("Trying to connect PostgreSQL...")
-	connectionString := "WRITE TO ARINA TO GET IT"
+	connectionString := "user=postgres password=secret dbname=tasksdb host=db port=5432 sslmode=disable"
 	log.Println("Connection string:", connectionString)
 
 	err := db.Init(connectionString)
@@ -19,6 +23,6 @@ func main() {
 	}
 
 	r := router.SetupRouter()
-	log.Println("Server running on http://localhost:8080")
-	log.Fatal(http.ListenAndServe(":8080", r))
+	log.Printf("Server running on http://localhost:%d\n", port)
+	log.Fatal(http.ListenAndServe(fmt.Sprintf("0.0.0.0:%d", port), r))
 }

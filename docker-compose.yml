@@ -1,0 +1,30 @@
+services:
+  go-backend:
+    container_name: go-backend
+    build: ./go-backend
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
+    depends_on: 
+      - db
+  
+  python-bot:
+    build: ./python-bot
+    container_name: python_bot_container
+    ports:
+      - "8081:8081"
+    restart: unless-stopped
+    environment:
+      BOT_TOKEN: "7165675865:AAG0hNMVZxK1eoV-gHs-amTJGBdKuIc15s8"
+    depends_on:
+      - go-backend
+
+  db:
+    container_name: db
+    image: postgres:17
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: secret
+      POSTGRES_DB: tasksdb
+    ports:
+      - "5432:5432"
