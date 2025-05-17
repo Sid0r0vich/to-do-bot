@@ -1,0 +1,6 @@
+httpx==0.24.1
+pytest==8.3.5
+pytest-asyncio==0.26.0
+aiogram==3.0.0b7
+python-telegram-bot==20.3
+requests==2.31.0
