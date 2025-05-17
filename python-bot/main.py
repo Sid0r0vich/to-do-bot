@@ -39,7 +39,7 @@ async def check_notifications(bot: Bot):
 
 
 async def main():
-    bot = Bot(token=config.BOT_TOKEN, default=DefaultBotProperties(parse_mode=ParseMode.HTML))
+    bot = Bot(token="7165675865:AAHSgEO_mxBzN1WN_KxoyPmDOaRcNFn9Dg8", default=DefaultBotProperties(parse_mode=ParseMode.HTML))
     dp = Dispatcher(storage=MemoryStorage())
     dp.include_router(router)
 

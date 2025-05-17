@@ -1,0 +1,45 @@
+jobs:
+  build-go:
+    name: Backend (Go)
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:15
+        env:
+          POSTGRES_USER: postgres
+          POSTGRES_PASSWORD: secret
+          POSTGRES_DB: tasksdb
+        ports: ['5432:5432']
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+
+    env:
+      DB_CONN_STRING: "user=postgres password=secret dbname=tasksdb sslmode=disable"
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Go
+        uses: actions/setup-go@v4
+        with:
+          go-version: '1.20'
+
+      - name: Wait for PostgreSQL to be ready
+        run: |
+          for i in {1..10}; do
+            pg_isready -h localhost -p 5432 && break
+            sleep 3
+          done
+
+      - name: Install Go dependencies
+        run: go mod tidy
+
+      - name: Build
+        run: go build ./...
+
+      - name: Run tests
+        run: go test ./...
