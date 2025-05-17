@@ -49,9 +49,11 @@ jobs:
 
 
       - name: Build
+        working-directory: ./go-backend
         run: go build ./...
 
       - name: Run tests
+        working-directory: ./go-backend
         run: go test ./...
 
   test-python:
