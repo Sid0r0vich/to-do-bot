@@ -8,7 +8,7 @@ from datetime import datetime, timedelta
 import pytest
 import httpx
 from httpx import Response, Request
-from datetime import datetime, timedelta, UTC
+from datetime import datetime, timedelta, timezone
 
 @pytest.mark.asyncio
 async def test_add_and_get_task_mocked():
@@ -35,7 +35,7 @@ async def test_add_and_get_task_mocked():
 
     task_text = "Test task from pytest"
     user_id = 12345
-    notify_time = datetime.now(UTC) + timedelta(minutes=5)
+    notify_time = datetime.now(timezone.utc) + timedelta(minutes=5)
 
     task_id = await repo.add_task(user_id, task_text, notify_at=notify_time)
     assert task_id == 1
