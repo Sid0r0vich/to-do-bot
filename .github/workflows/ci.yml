@@ -42,8 +42,11 @@ jobs:
             sleep 3
           done
 
-      - name: Install Go dependencies
+
+      - name: Install dependencies
+        working-directory: ./go-backend
         run: go mod tidy
+
 
       - name: Build
         run: go build ./...
