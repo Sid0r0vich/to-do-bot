@@ -8,11 +8,8 @@ from aiogram.enums.parse_mode import ParseMode
 from aiogram.fsm.storage.memory import MemoryStorage
 
 import text
-from data import TaskRepository
+from data import task_repo
 from handlers import router
-import config
-
-task_repo = TaskRepository("http://go-backend:8080")
 
 
 async def check_notifications(bot: Bot):
@@ -40,7 +37,7 @@ async def check_notifications(bot: Bot):
 
 
 async def main():
-    bot = Bot(token=config.BOT_TOKEN, default=DefaultBotProperties(parse_mode=ParseMode.HTML))
+    bot = Bot(token=os.getenv("BOT_TOKEN"), default=DefaultBotProperties(parse_mode=ParseMode.HTML))
     dp = Dispatcher(storage=MemoryStorage())
     dp.include_router(router)
 

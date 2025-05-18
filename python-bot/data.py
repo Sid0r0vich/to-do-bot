@@ -11,7 +11,7 @@ class TaskRepository:
     async def add_task(self, user_id: int, task_text: str, day: int = None, notify_at: datetime = None) -> int:
         if day is None:
             day = get_current_day_num()
-        
+
         payload = {
             "user_id": user_id,
             "text": task_text,
@@ -19,11 +19,11 @@ class TaskRepository:
         }
 
         notify_at = notify_at + timedelta(minutes=1)
-        
+
         if notify_at:
             payload["notify_at"] = notify_at.isoformat() + "Z"
             payload["has_notification"] = True
-            
+
         resp = await self.client.post(f"{self.base_url}/tasks", json=payload)
         resp.raise_for_status()
         return resp.json()["id"]
@@ -50,7 +50,7 @@ class TaskRepository:
     async def get_old_user_tasks(self, user_id: int, day: int = None) -> list[str]:
         # TODO
         return []
-    
+
     async def get_pending_notifications(self) -> list[dict]:
         try:
             resp = await self.client.get(f"{self.base_url}/notifications/pending")
@@ -59,7 +59,7 @@ class TaskRepository:
         except Exception as e:
             print(f"Ошибка при получении ожидающих уведомлений: {e}")
             return []
-    
+
     async def mark_notification_sent(self, task_id: int) -> bool:
         try:
             resp = await self.client.post(f"{self.base_url}/notifications/{task_id}/mark-sent")
@@ -68,3 +68,6 @@ class TaskRepository:
         except Exception as e:
             print(f"Ошибка при отметке уведомления как отправленного: {e}")
             return False
+
+
+task_repo = TaskRepository("http://go-backend:8080")

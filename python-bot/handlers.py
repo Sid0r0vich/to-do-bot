@@ -8,9 +8,8 @@ from datetime import datetime
 import kb
 import text
 from states import State
-from data import TaskRepository
+from data import task_repo
 
-task_repo = TaskRepository("http://localhost:8080")
 router = Router()
 
 
