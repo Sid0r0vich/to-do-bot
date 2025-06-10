@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: go-app-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: go-app
+  template:
+    metadata:
+      labels:
+        app: go-app
+    spec:
+      containers:
+      - name: go-app
+        image: sid00r/go-backend:latest
+        ports:
+        - containerPort: 8080
+        env:
+          - name: DB_CONNECTION_STRING
+            value: "user=postgres password=postgres dbname=tasksdb host=postgres-postgresql port=5432 sslmode=disable"
+          - name: BOT_TOKEN
+            value: "7165675865:AAEe20cQdZBWdwnpAy3d5LY0OHVAlFH3gUY"
+          - name: POSTGRES_USER
+            value: "postgres"
+          - name: POSTGRES_PASSWORD
+            value: "secret"
+          - name: POSTGRES_DB
+            value: "tasksdb"

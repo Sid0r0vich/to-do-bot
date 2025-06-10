@@ -19,7 +19,7 @@ func main() {
 
 	err := db.Init(connectionString)
 	if err != nil {
-		log.Fatalf("ERROR AAAA: %v", err)
+		log.Fatalf("ERROR: %v", err)
 	}
 
 	r := router.SetupRouter()
