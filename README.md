@@ -85,5 +85,5 @@
 
 ## Команда проекта
 
-- [Дмитрий Сидоркин](https://t.me/sid00r) — Python разработчик, DevOps
-- [Арина Павловская](https://t.me/yungeiren) - Go разработчик, технический писатель
+- [Дмитрий Сидоркин](https://t.me/sid00r) — Python разработчик, Cloud Engineer
+- [Арина Павловская](https://t.me/yungeiren) - Go разработчик, технический писатель, DevOps
