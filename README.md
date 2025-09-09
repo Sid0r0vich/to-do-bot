@@ -1,4 +1,18 @@
 # Система управления задачами с уведомлениями
+![Python](https://img.shields.io/badge/python-3670A0?style=for-the-badge&logo=python&logoColor=ffdd54)
+![Go](https://img.shields.io/badge/go-%2300ADD8.svg?style=for-the-badge&logo=go&logoColor=white)
+![Telegram](https://img.shields.io/badge/Telegram-2CA5E0?style=for-the-badge&logo=telegram&logoColor=white)
+![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
+![Kubernetes](https://img.shields.io/badge/kubernetes-%23326ce5.svg?style=for-the-badge&logo=kubernetes&logoColor=white)
+
+## Содержание
+- [Функциональность](#функциональность)
+- [Архитектура](#архитектура)
+- [Архитектура системы](#архитектура-системы)
+- [Схема данных](#схема-данных)
+- [API Эндпоинты](#api-эндпоинты)
+- [Масштабирование](#масштабирование)
+- [License](#license)
 
 ## Функциональность:
 
@@ -35,17 +49,17 @@
 
  Таблица tasks:
 
-id — уникальный ID задачи
+- id — уникальный ID задачи
 
-user_id — ID пользователя
+- user_id — ID пользователя
 
-text — текст задачи
+- text — текст задачи
 
-day — день задачи
+- day — день задачи
 
-notify_at — время уведомления (опционально)
+- notify_at — время уведомления (опционально)
 
-has_notification — флаг уведомления
+- has_notification — флаг уведомления
 
 
 ## API Эндпоинты:
@@ -63,3 +77,12 @@ has_notification — флаг уведомления
 
 - Кэширование, изменение конфига, переезд на другую виртуалку
 - По возможности добавить балансер или реплицировать базу данных при горизонтальном масштабировании
+
+## License
+
+[![Apache](https://img.shields.io/badge/apache-%23D42029.svg?style=for-the-badge&logo=apache&logoColor=white)](./LICENSE)
+
+## Команда проекта
+
+- [Дмитрий Сидоркин](https://t.me/sid00r) — Python разработчик, DevOps
+- [Арина Павловская](https://t.me/yungeiren) - Go разработчик, технический писатель
